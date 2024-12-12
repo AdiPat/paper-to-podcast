@@ -2,6 +2,10 @@
 
 Transform academic papers and reports into engaging podcast content with a single click. Try our live demo ↔ [Papercast](papercast.demo.com)!
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/AdiPat/paper-to-podcast/refs/heads/main/public/logo_art.png" />
+</p>
+
 ## 🎯 Motivation & Problem Statement
 
 Reading academic papers can be time-consuming and challenging for many professionals and students. Paper to Podcast solves this by converting complex research papers into digestible audio content, allowing users to learn while commuting, exercising, or multitasking.
