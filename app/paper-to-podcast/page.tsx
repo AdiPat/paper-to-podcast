@@ -3,9 +3,11 @@ import { Button } from "@nextui-org/react";
 import { useRef, useState } from "react";
 import { FaFileAlt } from "react-icons/fa";
 import { IoMdCloudUpload } from "react-icons/io";
+import { MdError } from "react-icons/md";
 
 export default function PaperToPodcastPage() {
   const [file, setFile] = useState<File | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const onUploadClick = () => {
@@ -15,10 +17,15 @@ export default function PaperToPodcastPage() {
   };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const files = event.target?.files ?? [];
+    let file = event.target?.files?.[0];
 
-    if (files && files.length > 0) {
-      setFile(files[0]);
+    if (file) {
+      const extension = file.name.split(".").pop();
+      if (extension !== "pdf") {
+        setErrorMessage("Only PDF files are supported!");
+        return;
+      }
+      setFile(file);
     }
   };
 
@@ -55,6 +62,23 @@ export default function PaperToPodcastPage() {
               <div className="flex justify-center items-center bg-gray-800 text-white p-4 rounded-lg">
                 <FaFileAlt data-testid="fa-file-alt" size={20} />
                 <p>{file.name}</p>
+              </div>
+            </div>
+          </div>
+        )}
+        {errorMessage && (
+          <div className="flex justify-center">
+            <div className="p-2 mt-2 text-xs text-center ">
+              <div className="flex justify-center items-center bg-red-800 text-white p-4 rounded-lg">
+                <p className="flex items-center justify-center">
+                  {" "}
+                  <MdError
+                    className="mr-2"
+                    data-testid="fa-exclamation-triangle"
+                    size={20}
+                  />
+                  {errorMessage}
+                </p>
               </div>
             </div>
           </div>

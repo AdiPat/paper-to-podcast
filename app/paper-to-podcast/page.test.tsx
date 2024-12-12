@@ -85,4 +85,28 @@ describe("paper to podcast page", () => {
     const icon = screen.getAllByTestId("fa-upload")[0];
     expect(icon).not.toBeNull();
   });
+
+  it("file upload supports only pdf files", async () => {
+    render(<PaperToPodcastPage />);
+    const fileInputButton = screen.getAllByRole("button", {
+      name: /Upload Paper/i,
+    })[0];
+    const fileInput = fileInputButton.querySelector('input[type="file"]');
+    const changeMock = vi.fn();
+    (fileInput as any).click = changeMock;
+    const file = new File(["dummy content"], "example.png", {
+      type: "image/png",
+    });
+    fireEvent.click(fileInputButton as any);
+    fireEvent.change(fileInput as any, { target: { files: [file] } });
+    const errorElement = screen.getAllByText(
+      /Only PDF files are supported!/i
+    )[0];
+    const errorIcon = screen.getAllByTestId("fa-exclamation-triangle")[0];
+
+    expect(changeMock).toHaveBeenCalled();
+    expect(fileInput).not.toBeNull();
+    expect(errorElement).toBeDefined();
+    expect(errorIcon).not.toBeNull();
+  });
 });
