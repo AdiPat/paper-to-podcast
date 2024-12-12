@@ -1,45 +1,66 @@
-# Vitest
+# 📝 Paper to Podcast 🎙️
 
-This example shows how to use [Vitest](https://github.com/vitest-dev/vitest) with Next.js.
+Transform academic papers and reports into engaging podcast content with a single click. Try our live demo ↔ [Papercast](papercast.demo.com)!
 
-This includes Next.js' built-in support for Global CSS, CSS Modules and TypeScript. This example also shows how to use Vitest with the App Router and React Server Components.
+## 🎯 Motivation & Problem Statement
 
-> **Note:** Since tests can be co-located alongside other files inside the App Router, we have placed those tests in `app/` to demonstrate this behavior (which is different than `pages/`). You can still place all tests in `__tests__` if you prefer.
+Reading academic papers can be time-consuming and challenging for many professionals and students. Paper to Podcast solves this by converting complex research papers into digestible audio content, allowing users to learn while commuting, exercising, or multitasking.
 
-## Deploy your own
+## ⚡ Key Features
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-vitest&project-name=with-vitest&repository-name=with-vitest)
+- Research paper PDF upload and parsing.
+- Natural text-to-speech conversion.
+- Downloadable and playable podcast audio files.
+- Custom voice modulation options.
+- Batch processing capabilities.
 
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
-
-```bash
-npx create-next-app --example with-vitest with-vitest-app
-```
+## 🚀 Setup Instructions
 
 ```bash
-yarn create next-app --example with-vitest with-vitest-app
+# Clone the repository
+git clone https://github.com/AdiPat/paper-to-podcast
+
+# Install dependencies
+npm install
+
+# Set up environment variables
+cp .env.example .env.local
+
+# Run development server
+npm run dev
 ```
+
+The application will be available at `http://localhost:3000`.
+
+## 🧪 Testing
+
+**Unit Tests**
 
 ```bash
-pnpm create next-app --example with-vitest with-vitest-app
+# Run unit tests
+npm run test
+
+# Watch mode
+npm run test:watch
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
-
-## Running Tests
+**E2E Tests**
 
 ```bash
-npm test
+# Run end-to-end tests
+npm run test:e2e
 ```
 
-```bash
-yarn test
-```
+## 🤝 Contributing
 
-```bash
-pnpm test
-```
+We welcome contributions! Please follow these steps:
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request.
+
+## 📄 License
+
+This project is licensed under the MIT License.
