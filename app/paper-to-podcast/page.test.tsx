@@ -37,7 +37,7 @@ describe("paper to podcast page", () => {
     expect(description).toBeDefined();
   });
 
-  it("should trigger click handler when button is clicked", async () => {
+  it("opens file selector when button is clicked", async () => {
     render(<PaperToPodcastPage />);
     const fileInputButton = screen.getAllByRole("button", {
       name: /Upload Paper/i,
@@ -54,5 +54,35 @@ describe("paper to podcast page", () => {
     const clickStatus = fireEvent.click(fileInputButton as any);
     expect(clickMock).toHaveBeenCalled();
     expect(clickStatus).toBe(true);
+  });
+
+  it("Shows the uploaded file in the UI after file upload is done", async () => {
+    render(<PaperToPodcastPage />);
+    const fileInputButton = screen.getAllByRole("button", {
+      name: /Upload Paper/i,
+    })[0];
+    const fileInput = fileInputButton.querySelector('input[type="file"]');
+
+    // Simulate file selection
+    const file = new File(["dummy content"], "example.pdf", {
+      type: "application/pdf",
+    });
+    fireEvent.change(fileInput as any, { target: { files: [file] } });
+
+    // Assert that the state is updated and the file name is displayed
+
+    const icon = screen.getAllByTestId("fa-file-alt")[0];
+    const fileNameDisplay = (await screen.findAllByText(/example.pdf/i))[0];
+    expect(icon).not.toBeNull();
+    expect(fileNameDisplay).toBeDefined();
+  });
+
+  it("file upload button has upload icon", async () => {
+    render(<PaperToPodcastPage />);
+    const fileInputButton = screen.getAllByRole("button", {
+      name: /Upload Paper/i,
+    })[0];
+    const icon = screen.getAllByTestId("fa-upload")[0];
+    expect(icon).not.toBeNull();
   });
 });
